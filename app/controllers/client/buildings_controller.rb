@@ -27,9 +27,14 @@ class Client::BuildingsController < ApplicationController
     redirect_to "/client/buildings/#{building['id']}"
   end
 
+  # def show
+  #   response = HTTP.get("http://localhost:3000/api/buildings/#{params[:id]}")
+  #   @building = response.parse
+  #   render 'show.html.erb'
+  # end
+
   def show
-    response = HTTP.get("http://localhost:3000/api/buildings/#{params[:id]}")
-    @building = response.parse
+    @building = Building.find(params[:id])
     render 'show.html.erb'
   end
 
